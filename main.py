@@ -37,8 +37,11 @@ db = connection.cursor()
 # the associated function.
 @app.route("/")
 @login_required
-def hello_world():
-    return 'Hello World'
+def index():
+    db.execute("SELECT * FROM alumni")
+
+    data=db.fetchall()
+    return render_template("index.html", data=data)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
