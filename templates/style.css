@@ -1,9 +1,4 @@
-/*!
- * Project_Name: Themezy Band Template
- * Author: Themezy
- * Email: info@themezy.com
- * URL: http://themezy.com
- */
+
 /*=========================================== 
  * Importing CSS Libraries
  *===========================================*/
@@ -1903,14 +1898,14 @@ body {
   height: 0; }
 
 /* display none until init */
-/* line 16, sass/layout/_content.scss */
+/* line 16, sass/layout/_content.scss 
 .owl-carousel {
   display: none;
   position: relative;
   width: 100%;
   -ms-touch-action: pan-y; }
 
-/* line 22, sass/layout/_content.scss */
+/* line 22, sass/layout/_content.scss 
 .owl-carousel .owl-wrapper {
   display: none;
   position: relative;
@@ -1951,7 +1946,7 @@ body {
   cursor: url(grabbing.png) 8 8, move; }
 
 /* fix */
-/* line 62, sass/layout/_content.scss */
+/* line 62, sass/layout/_content.scss 
 .owl-carousel .owl-wrapper,
 .owl-carousel .owl-item {
   -webkit-backface-visibility: hidden;
