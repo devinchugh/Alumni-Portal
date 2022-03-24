@@ -52,31 +52,37 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
+        password=request.form.get("password")
+        username=request.form.get("username")
+        
         # Ensure username was submitted
-        if not request.form.get("username"):
+        if not username:
             return abort(400)
 
         # Ensure password was submitted
-        elif not request.form.get("password"):
+        elif not password:
             return abort(400)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?",
-                          request.form.get("username"))
-
+                          (username,))
+        
+        rows=db.fetchall()
+        
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not rows[0]["password"]==request.form.get("password"):
+        if len(rows) != 1 or not rows[0][2]==password:
             return abort(400)
 
         # Remember which user has logged in
-        session["user_id"] = rows[0]["user_id"]
+        session["user_id"] = rows[0][0]
 
+        flash("Sign In Successfull!")
         # Redirect user to home page
         return redirect("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login.html")
+        return render_template("./login.html")
 
 
 @app.route("/logout")
