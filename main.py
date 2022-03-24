@@ -30,6 +30,7 @@ Session(app)
 connection = sqlite3.connect("database.db", check_same_thread=False)
 
 # cursor object
+connection.row_factory = sqlite3.Row
 db = connection.cursor()
   
 # The route() function of the Flask class is a decorator, 
