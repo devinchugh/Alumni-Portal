@@ -42,7 +42,7 @@ def index():
     db.execute("SELECT * FROM alumni")
 
     data=db.fetchall()
-    return render_template("/index.html")
+    return render_template("/index.html", data=data)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

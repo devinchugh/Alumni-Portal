@@ -45,7 +45,7 @@
 			<div class="hero">
 				<div class="slider">
 					<ul class="slides">
-						<li class="lazy-bg" data-background="{{url_for('static', filename='dummy/slide-1.jpg')}}">
+						<li class="lazy-bg" style="background:url('static/dummy/slide-1.jpg')">
 							<div class="container">
 								<h2 class="slide-title">Alumni Directory</h2>
 								<h3 class="slide-subtitle">IIT Jammu</h3>
@@ -67,10 +67,13 @@
 							<div class="col-md-4">
 								<div class="feature">
 									<figure class="cut-corner">
-										<img style="float: left;" src="{{url_for('static', filename='dummy/Band Name/music-pics-23.jpg')}}" alt="" height="230">
 									
-									<h3 class="feature-title" style="float:right;" >Name :<br> Email:<br>Phone :<br>LinkedIn ID :<br>Status:<p>Any details</p>
+										{% for alumni in data %}	
+										<img style="float: left;" src="{{url_for('static', filename='alumni_pics/Devin_Pic.jpg')}}" alt="" height="230">
+									
+									<h3 class="feature-title" style="float:right;" >Name:{{alumni.name}} <br> Email: <a href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone:{{alumni.phone}}<br><a href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status:{{alumni.status}}
 									</figure>
+									{% endfor %}
 								</div> <!-- .feature -->
 							</div>
 							
