@@ -69,9 +69,9 @@
 									<figure class="cut-corner">
 									
 										{% for alumni in data %}	
-										<img style="float: left;" src="{{url_for('static', filename='alumni_pics/Devin_Pic.jpg')}}" alt="" height="230">
+										<img style="float: left;" src="{{url_for('static', filename='alumni_pics/pic_devin.jpg')}}" alt="" height="230">
 									
-									<h3 class="feature-title" style="float:right;" >Name:{{alumni.name}} <br> Email: <a href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone:{{alumni.phone}}<br><a href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status:{{alumni.status}}
+									<h3 class="feature-title" style="float:right;" >Name:{{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone:{{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status:{{alumni.status}}
 									</figure>
 									{% endfor %}
 								</div> <!-- .feature -->
@@ -88,7 +88,9 @@
 					<img src="{{url_for('static', filename='dummy/logo.png')}}" alt="Site Name">
 					
 					<address>
-						<p>Address of IIT Jammu <br><a href="tel:9488487853">+91 94884 87853</a> <br> <a href="mailto:alumniconnect@iitjammu.ac.in">mailto:alumniconnect@iitjammu.ac.in</a></p> 
+						<p>Indian Institute of Technology Jammu
+							Jagti, NH-44 , PO Nagrota
+							Jammu - 181 221 J&K,  India <br>Tel.: 0191-2570381<br> <a href="mailto:alumniconnect@iitjammu.ac.in">mailto:alumniconnect@iitjammu.ac.in</a></p> 
 					</address> 
 					
 					<form action="#" class="newsletter-form">
