@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Alumni of IIT Jammu</title>
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+		
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body class="header-collapse">
+		
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="index.html" id="branding">
+						<img src="{{url_for('static', filename='dummy/logo.png')}}" alt="Site Title">
+						<small class="site-description">Alumni Portal</small>
+					</a> <!-- #branding -->
+					
+					<nav class="main-navigation">
+						<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+							<li class="menu-item"><a href="about.html">About</a></li>
+							<li class="menu-item"><a href="gallery.html">Gallery</a></li>
+							<li class="menu-item"><a href="contact.html">Contact</a></li>
+						</ul> <!-- .menu -->
+					</nav> <!-- .main-navigation -->
+					<div class="mobile-menu"></div>
+				</div>
+			</header> <!-- .site-header -->
+			
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" style="background:url('static/dummy/slide-1.jpg')">
+							<div class="container">
+								<h2 class="slide-title">Alumni Directory</h2>
+								<h3 class="slide-subtitle">IIT Jammu</h3>
+								
+								<a href="#" class="button cut-corner">AlumniConnect</a>
+							</div>
+						
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+				<div class="fullwidth-block why-chooseus-section">
+					<div class="container">
+						<h2 class="section-title">Alumni</h2>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="feature">
+									<figure class="cut-corner">
+									
+										{% for alumni in data %}	
+										<img style="float: left;" src="{{url_for('static', filename='alumni_pics/pic_devin.jpg')}}" alt="" height="230">
+									
+									<h3 class="feature-title" style="float:right;" >Name:{{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone:{{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status:{{alumni.status}}
+									</figure>
+									{% endfor %}
+								</div> <!-- .feature -->
+							</div>
+							
+							
+						</div>
+					</div> <!-- .container -->
+				</div> <!-- .why-chooseus-section -->
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<img src="{{url_for('static', filename='dummy/logo.png')}}" alt="Site Name">
+					
+					<address>
+						<p>Indian Institute of Technology, Jammu
+							Jagti, NH-44 , PO Nagrota
+							Jammu - 181 221 J&K,  India <br>Tel.: 0191-2570381<br> <a href="mailto:alumniconnect@iitjammu.ac.in">mailto:alumniconnect@iitjammu.ac.in</a></p> 
+					</address> 
+					
+					<form action="#" class="newsletter-form">
+						<input type="email" placeholder="Any queries...">
+						<input type="submit" class="button cut-corner" value="Subscribe">
+					</form> <!-- .newsletter-form -->
+					
+					<div class="social-links">
+						<a href="#"><i class="fa fa-facebook-square"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-google-plus"></i></a>
+						<a href="#"><i class="fa fa-pinterest"></i></a>
+					</div> <!-- .social-links -->
+					
+					<p class="copy">IITJammu . All right reserved. Designed by Devin | Anamika </p>
+			  </div>
+			</footer> <!-- .site-footer -->
+
+		</div> <!-- #site-content -->
+
+		<script src="js/jquery-1.11.1.min.js"></script>		
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+		
+	</body>
+
+</html>

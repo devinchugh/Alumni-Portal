@@ -83,7 +83,7 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("./login.html")
+        return render_template("login.html")
 
 
 @app.route("/logout")
@@ -101,4 +101,4 @@ if __name__ == '__main__':
   
     # run() method of Flask class runs the application 
     # on the local development server.
-    app.run()
+    app.run(debug=True)
