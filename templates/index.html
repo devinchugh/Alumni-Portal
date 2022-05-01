@@ -5,18 +5,17 @@
     <title>Alumni IIT Jammu</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
-    
-    <link rel="apple-touch-icon" href="{{ url_for('static',filename='home_img/apple-icon.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='home_img/favicon.ico') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='home_css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='home_css/templatemo.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='home_css/custom.css') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static',filename='home_assets/img/apple-icon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='home_assets/img/favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='home_assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='home_assets/css/templatemo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='home_assets/css/custom.css') }}">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="{{ url_for('static',filename='home_css/fontawesome_min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='home_assets/css/fontawesome_min.css') }}">
 
 </head>
 
@@ -184,6 +183,12 @@
                         Convocation Year:<br>
                         Current Status:<br>
                     </p>
+                    {% for alumni in data %}	
+										<img style="float: left;" src="{{url_for('static', filename='alumni_pics/pic_devin.jpg')}}" alt="" height="230">
+									
+									<h3 class="feature-title" style="float:right;" >Name:{{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone:{{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status:{{alumni.status}}
+									</figure>
+					{% endfor %}
                 </div>
                 <div class="col-md-4">
                     <img src="img/profilepic.jpg " style="width: 250px;height: 250px;" alt="Alumni Pic">
