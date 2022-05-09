@@ -36,12 +36,43 @@ db = connection.cursor()
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 
 # the associated function.
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
+    
+    if request.method=="POST":
+        search= request.form.get("search")
+        print(search)
+
+        data=set()
+
+        db.execute("SELECT * FROM alumni WHERE name LIKE ?", ("%"+search+"%",) )
+        alumni=db.fetchall()
+
+        for people in alumni:
+            data.add(people)
+
+        db.execute("SELECT * FROM alumni WHERE email LIKE ?", ("%"+search+"%",) )
+        alumni=db.fetchall()
+        for people in alumni:  
+            data.add(people) 
+
+        db.execute("SELECT * FROM alumni WHERE status LIKE ?", ("%"+search+"%",))
+        alumni=db.fetchall()
+        for people in alumni:
+            data.add(people)
+
+        db.execute("SELECT * FROM alumni WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
+        alumni=db.fetchall()
+        for people in alumni:
+            data.add(people)          
+
+        return render_template("/index.html",data=data)
+
     db.execute("SELECT * FROM alumni")
 
-    data=db.fetchall()
+    data=db.fetchall()    
+
     return render_template("/index.html", data=data)
 
 @app.route("/login", methods=["GET", "POST"])
