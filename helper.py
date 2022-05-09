@@ -4,6 +4,7 @@ import urllib.parse
 
 from flask import redirect, render_template, request, session
 from functools import wraps
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 
@@ -19,3 +20,7 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+
+if __name__ == '__main__':
+    print(generate_password_hash("devin"))

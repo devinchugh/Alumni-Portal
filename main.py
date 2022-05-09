@@ -4,6 +4,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from helper import login_required
 import sqlite3
+from werkzeug.security import check_password_hash, generate_password_hash
   
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
@@ -102,7 +103,7 @@ def login():
         rows=db.fetchall()
         
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not rows[0][2]==password:
+        if len(rows) != 1 or not check_password_hash(rows[0][2],password):
             return abort(400)
 
         # Remember which user has logged in

@@ -43,13 +43,13 @@
                             <a class="nav-link" href="#">  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"> Home </a>
+                            <a class="nav-link" href="/"> Home </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> Logout </a>
+                            <a class="nav-link" href="/logout"> Logout </a>
                         </li>
                     </ul>
                 </div>
@@ -177,7 +177,7 @@
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-white">
                     {% for alumni in data %}	
-										<img style="float: right;" src="{{url_for('static', filename='home_assets/img/pic_devin.jpg')}}" alt="" height="230">
+										<img style="float: right;" src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" height="230">
 									
 									<h3 class="feature-title" style="float:right;" >Name: {{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone: {{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status: {{alumni.status}}
 									
