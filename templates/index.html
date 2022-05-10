@@ -133,7 +133,12 @@
                             <div class="text-align-left">
                                 <h1 class="h1">About Alumni Services</h1>
                                 <p>
-                                    Content to be added <strong>bold</strong> to about page.
+                                    IIT Jammu Alumni Association is going to be established in the year 2020 with an aim to foster the relationship
+                                     and to strengthen the ties between with <strong>IIT Jammu and its Alumni.</strong> Alumni Association will provide a common 
+                                     anchor for the alumni spread all over the country and the world.
+
+                                    We’re committed to helping all alumni thrive and connect, whether through career guidance, special events,
+                                     or our clubs and societies that will span the globe.
                                 </p>
                             </div>
                         </div>
@@ -149,7 +154,7 @@
             <i class="fas fa-chevron-right"></i>
         </a>
     </div>
-    <!-- End Banner Hero -->
+    <!-- End Banner -->
 <!-- individual details -->
     <section class="bg-success py-5">
         <div class="container">
@@ -177,14 +182,21 @@
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-white">
                     {% for alumni in data %}	
-										<img style="float: right;" src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" height="230">
 									
-									<h3 class="feature-title" style="float:right;" >Name: {{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a> <br>Phone: {{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status: {{alumni.status}}
+									<h3 class="feature-title" >Name: {{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a>
+                                         <br>Phone: {{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status: {{alumni.status}}
 									
 					{% endfor %}
                     
                 </div>
-               
+                <div class="col-md-4">
+                    {% for alumni in data %}	
+										<img src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" height="230">
+									
+									
+					{% endfor %}
+                    
+                </div>
             </div>
         </div>
     </section>
