@@ -171,7 +171,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="{{ url_for('static', filename='home_assets/img/profilepic.jpg')}}" style="width: 250px;height: 250px;" alt="Alumni Pic">
+                    <img src="{{ url_for('static', filename='home_assets/img/profilepic.jpg')}}" style="width: 200px;height: 250px;" alt="Alumni Pic">
                 </div>
             </div>
         </div>
@@ -191,7 +191,7 @@
                 </div>
                 <div class="col-md-4">
                     {% for alumni in data %}	
-										<img src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" height="230">
+										<img src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" style="width: 200px;height: 250px;">
 									
 									
 					{% endfor %}
