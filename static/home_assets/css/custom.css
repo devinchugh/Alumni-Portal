@@ -2,10 +2,10 @@
 Custom Css
 */
 .clink:hover{
-    color: aquamarine;
+    color:white;
     text-decoration: none;
 }
 .clink{
-    color: white;
-    
+    color: blue;
+    text-decoration: none;
 }
