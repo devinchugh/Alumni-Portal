@@ -1,3 +1,11 @@
 /*
 Custom Css
 */
+.clink:hover{
+    color: aquamarine;
+    text-decoration: none;
+}
+.clink:hover{
+    color: white;
+    text-decoration: none;
+}
