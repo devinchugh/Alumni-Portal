@@ -134,8 +134,7 @@
                                 <h1 class="h1">About Alumni Services</h1>
                                 <p>
                                     IIT Jammu Alumni Association is going to be established in the year 2020 with an aim to foster the relationship
-                                     and to strengthen the ties between with <strong>IIT Jammu and its Alumni.</strong> Alumni Association will provide a common 
-                                     anchor for the alumni spread all over the country and the world.
+                                     and to strengthen the ties between with <strong>IIT Jammu and its Alumni.</strong> 
 
                                     We’re committed to helping all alumni thrive and connect, whether through career guidance, special events,
                                      or our clubs and societies that will span the globe.
@@ -183,8 +182,8 @@
                 <div class="col-md-8 text-white">
                     {% for alumni in data %}	
 									
-									<h3 class="feature-title" >Name: {{alumni.name}} <br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a>
-                                         <br>Phone: {{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status: {{alumni.status}}
+									<h1 class="feature-title" >Name: {{alumni.name}} </h1><p><br> Email: <a target="_blank" href="{{alumni.email}}">{{alumni.email}}</a>
+                                         <br>Phone: {{alumni.phone}}<br>LinkedIn: <a target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status: {{alumni.status}}</p>
 									
 					{% endfor %}
                     
