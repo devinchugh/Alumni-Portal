@@ -46,29 +46,34 @@ def index():
         print(search)
 
         data=set()
+        if search:
+            db.execute("SELECT * FROM alumni WHERE name LIKE ?", ("%"+search+"%",) )
+            alumni=db.fetchall()
 
-        db.execute("SELECT * FROM alumni WHERE name LIKE ?", ("%"+search+"%",) )
-        alumni=db.fetchall()
+            for people in alumni:
+                data.add(people)
 
-        for people in alumni:
-            data.add(people)
+            db.execute("SELECT * FROM alumni WHERE email LIKE ?", ("%"+search+"%",) )
+            alumni=db.fetchall()
+            for people in alumni:  
+                data.add(people) 
 
-        db.execute("SELECT * FROM alumni WHERE email LIKE ?", ("%"+search+"%",) )
-        alumni=db.fetchall()
-        for people in alumni:  
-            data.add(people) 
+            db.execute("SELECT * FROM alumni WHERE status LIKE ?", ("%"+search+"%",))
+            alumni=db.fetchall()
+            for people in alumni:
+                data.add(people)
 
-        db.execute("SELECT * FROM alumni WHERE status LIKE ?", ("%"+search+"%",))
-        alumni=db.fetchall()
-        for people in alumni:
-            data.add(people)
+            db.execute("SELECT * FROM alumni WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
+            alumni=db.fetchall()
+            for people in alumni:
+                data.add(people)          
 
-        db.execute("SELECT * FROM alumni WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
-        alumni=db.fetchall()
-        for people in alumni:
-            data.add(people)          
+            return render_template("/index.html",data=data)
 
-        return render_template("/index.html",data=data)
+        degree=request.form.get("degree")
+        year=request.form.get("year")
+        department=request.form.get("department")
+        
 
     data=[]
     db.execute("SELECT * FROM alumni_cs")
