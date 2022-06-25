@@ -66,19 +66,24 @@ def index():
             db.execute("SELECT * FROM alumni WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
             alumni=db.fetchall()
             for people in alumni:
-                data.add(people)          
+                data.add(people)
+
+            db.execute("SELECT * FROM alumni WHERE entry_no LIKE ? ", ("%"+search+"%",) )
+            alumni=db.fetchall()
+            for people in alumni:
+                data.add(people)               
 
             return render_template("/index.html",data=data)
 
         degree=request.form.get("degree")
         year=request.form.get("year")
         department=request.form.get("department")
-        
+
 
     data=[]
-    db.execute("SELECT * FROM alumni_cs")
-    cs=db.fetchall()
-    data[0:0]=cs  
+    db.execute("SELECT * FROM alumni_me")
+    me=db.fetchall()
+    data[0:0]=me
 
     return render_template("/index.html", data=data)
 
