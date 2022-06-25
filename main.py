@@ -47,28 +47,29 @@ def index():
 
         data=set()
         if search:
-            db.execute("SELECT * FROM alumni WHERE name LIKE ?", ("%"+search+"%",) )
+            al_table="alumni_me"
+            db.execute("SELECT * FROM " + al_table + " WHERE name LIKE ?", ("%"+search+"%",) )
             alumni=db.fetchall()
 
             for people in alumni:
                 data.add(people)
 
-            db.execute("SELECT * FROM alumni WHERE email LIKE ?", ("%"+search+"%",) )
+            db.execute("SELECT * FROM " + al_table + " WHERE email LIKE ?", ("%"+search+"%",) )
             alumni=db.fetchall()
             for people in alumni:  
                 data.add(people) 
 
-            db.execute("SELECT * FROM alumni WHERE status LIKE ?", ("%"+search+"%",))
+            db.execute("SELECT * FROM " + al_table + " WHERE status LIKE ?", ("%"+search+"%",))
             alumni=db.fetchall()
             for people in alumni:
                 data.add(people)
 
-            db.execute("SELECT * FROM alumni WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
+            db.execute("SELECT * FROM " + al_table + " WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
             alumni=db.fetchall()
             for people in alumni:
                 data.add(people)
 
-            db.execute("SELECT * FROM alumni WHERE entry_no LIKE ? ", ("%"+search+"%",) )
+            db.execute("SELECT * FROM " + al_table + " WHERE entry_no LIKE ? ", ("%"+search+"%",) )
             alumni=db.fetchall()
             for people in alumni:
                 data.add(people)               
