@@ -70,9 +70,10 @@ def index():
 
         return render_template("/index.html",data=data)
 
-    db.execute("SELECT * FROM alumni")
-
-    data=db.fetchall()    
+    data=[]
+    db.execute("SELECT * FROM alumni_cs")
+    cs=db.fetchall()
+    data[0:0]=cs  
 
     return render_template("/index.html", data=data)
 
