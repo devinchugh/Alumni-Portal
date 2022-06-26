@@ -51,16 +51,17 @@ body, ul, li, p, a, label, input, div {
 /* General */
 .logo { font-weight: 500 !important;}
 .text-warning {  color: #ede861 !important;}
+.text-ReachUs{ color:#8cced6 !important; }
 .text-muted { color: #bcbcbc !important;}
-.text-success { color: #59ab6e !important;}
+.text-success { color: #022e70 !important;}
 .text-light { color: #cfd6e1 !important;}
 .bg-dark { background-color: #212934 !important;}
 .bg-light { background-color: #e9eef5 !important;}
 .bg-black { background-color: #1d242d !important;}
-.bg-success { background-color: #59ab6e !important;}
+.bg-success { background-color: #ffffff !important;}
 .btn-success {
-  background-color: #59ab6e !important;
-  border-color: #56ae6c !important;
+  background-color: #5cb9c4 !important;
+  border-color: #7bc8d1 !important;
   cursor: pointer;
 }
 .pagination .page-link:hover {color: #000;}
@@ -72,7 +73,7 @@ body, ul, li, p, a, label, input, div {
 #templatemo_nav_top { min-height: 40px;}
 #templatemo_nav_top * { font-size: .9em !important;}
 #templatemo_main_nav a { color: #212934;}
-#templatemo_main_nav a:hover { color: #69bb7e;}
+#templatemo_main_nav a:hover { color: #5cb9c4;}
 #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
 
 /* Hero Carousel */
@@ -80,27 +81,15 @@ body, ul, li, p, a, label, input, div {
 /* Accordion */
 .templatemo-accordion a { color: #000;}
 .templatemo-accordion a:hover { color: #333d4a;}
-/* Shop */
-.shop-top-menu a:hover { color: #69bb7e !important;}
 
-/* Brand */
-.brand-img {
-  filter: grayscale(100%);
-  opacity: 0.5;
-  transition: .5s;
-}
-.brand-img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
 /* Carousel Hero */
 #template-mo-zay-hero-carousel .carousel-indicators li {
   margin-top: -50px;
-  background-color: #59ab6e;
+  background-color:#5cb9c4;
 }
 #template-mo-zay-hero-carousel .carousel-control-next i,
 #template-mo-zay-hero-carousel .carousel-control-prev i {
-  color: #59ab6e !important;
+  color: #5cb9c4 !important;
   font-size: 2.8em !important;
 }
 /* Carousel Brand */
@@ -108,16 +97,9 @@ body, ul, li, p, a, label, input, div {
   font-size: .5em !important;
   color: #000 !important;
 }
-/* Services */
-.services-icon-wap {transition: .3s;}
-.services-icon-wap:hover, .services-icon-wap:hover i {color: #fff;}
-.services-icon-wap:hover {background: #69bb7e;}
-/* Contact map */
-.leaflet-control a, .leaflet-control { font-size: 10px !important;}
-.form-control { border: 1px solid #e8e8e8;}
 /* Footer */
 #tempaltemo_footer a { color: #dcdde1;}
-#tempaltemo_footer a:hover { color: #68bb7d;}
+#tempaltemo_footer a:hover { color:#5cb9c4;}
 #tempaltemo_footer ul.footer-link-list li { padding-top: 10px;}
 #tempaltemo_footer ul.footer-icons li {
   width: 2.6em;
