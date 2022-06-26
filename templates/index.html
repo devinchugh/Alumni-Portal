@@ -113,7 +113,7 @@
                             <div class="text-align-left align-self-center">
                                 <h1 class="h1 text-success"><b>IIT Jammu</b> Alumni Directory</h1>
                                 <p>
-                                    Welcome to the Alumni Directory of IIT Jammu. To naviate to the details of any alumni, please use
+                                    Welcome to the Alumni Directory of IIT Jammu. To navigate to the details of any alumni, please use
                                      the <a rel="sponsored" class="text-success" href="#" target="_blank">Search</a> icon in the top bar. 
                                     
                                 </p>
@@ -156,33 +156,37 @@
 <!-- individual details -->
 
     <section class="bg-success py-5" >
-        <ul class="sections" >
-            <li class="first">Degree
-                <ul class="submenu">
-                    <li>B.Tech</li>
-                    <li>M.Tech</li>
-                    <li>PhD</li>
-                </ul>
-            </li>    
-            <li>Year of Enrollment
-                <ul class="submenu">
-                    <li>2016</li>
-                    <li>2017</li>
-                    <li>2018</li>
-                    <li>2019</li>
-                </ul>
-            </li>    
-            <li>Department
-                <ul class="submenu">
-                    <li>Chemical Engineering</li>
-                    <li>Civil Engineering</li>
-                    <li>Computer Science and Engineering</li>
-                    <li>Electrical Engineering</li>
-                    <li>Material Engineering</li>
-                    <li>Mechanical Engineering</li>
-                </ul>
-            </li>    
-        </ul>
+        <div class="section-forms">
+        <form action="{{url_for('index')}}" method="POST">
+        <select name="degree" class="sections" >
+                    <option value="nil">Degree:</option>
+                    <option value="Btech">B.Tech</option>
+                    <option value="Mtech">M.Tech</option>
+                    <option value="PhD">PhD</option>
+              </select>
+        </form> 
+            <form action="{{url_for('index')}}" method="POST">
+                <select name="Year of Enrollment" class="sections">
+                            <option value="nil">Year of Enrollment:</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                </select>
+            </form> 
+            <form action="{{url_for('index')}}" method="POST">
+                <select name="Department" class="sections">
+                            <option value="nil">Department:</option>
+                            <option value="CH">Chemical Engineering</option>
+                            <option value="CE">Civil Engineering</option>
+                            <option value="CS">Computer Science and Engineering</option>
+                            <option value="EE">Electrical Engineering</option>
+                            <option value="MT">Material Engineering</option>
+                            <option value="ME">Mechanical Engineering</option>
+                </select>
+            </form> 
+            </div>
+    
         <div class="container">
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-white">
