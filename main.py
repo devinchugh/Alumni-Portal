@@ -45,7 +45,7 @@ def index():
         search= request.form.get("search")
         print(search)
 
-        data=set()
+        data=[]
         if search:
             al_tables=["alumni_me", "alumni_cs", "alumni_ee", "alumni_ch", "alumni_mt", "alumni_ce"]
             
@@ -54,39 +54,97 @@ def index():
                 alumni=db.fetchall()
 
                 for people in alumni:
-                    data.add(people)
+                    data.append(people)
 
                 db.execute("SELECT * FROM " + al_table + " WHERE email LIKE ?", ("%"+search+"%",) )
                 alumni=db.fetchall()
                 for people in alumni:  
-                    data.add(people) 
+                    data.append(people) 
 
                 db.execute("SELECT * FROM " + al_table + " WHERE status LIKE ?", ("%"+search+"%",))
                 alumni=db.fetchall()
                 for people in alumni:
-                    data.add(people)
+                    data.append(people)
 
                 db.execute("SELECT * FROM " + al_table + " WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
                 alumni=db.fetchall()
                 for people in alumni:
-                    data.add(people)
+                    data.append(people)
 
                 db.execute("SELECT * FROM " + al_table + " WHERE entry_no LIKE ? ", ("%"+search+"%",) )
                 alumni=db.fetchall()
                 for people in alumni:
-                    data.add(people)               
+                    data.append(people)  
+
+            data=list(set(data))                     
 
             return render_template("/index.html",data=data)
 
         degree=request.form.get("degree")
         year=request.form.get("year")
-        department=request.form.get("department")
+        dept=request.form.get("department")
+
+        if dept!="null" and dept:
+            al_table="alumni_"+str(dept)
+
+            db.execute("SELECT * FROM " + al_table)
+            alumni=db.fetchall()
+
+            for people in alumni:
+                data.append(people)
+
+            if year!="null" and year:
+                for person in data:
+                    if person["year"]!=year:
+                        data.remove(person)
+
+            if degree!="null" and degree:
+                for person in data:
+                    if person["program"]!=degree:
+                        data.remove(person)
+
+            return render_template("/index.html", data=data)
+
+        al_tables=["alumni_me", "alumni_cs", "alumni_ee", "alumni_ch", "alumni_mt", "alumni_ce"]
+            
+        for al_table in al_tables:
+            db.execute("SELECT * FROM " + al_table)
+            alumni=db.fetchall()
+
+            for people in alumni:
+                data.append(people)
+
+        if year and year!="null":
+            for person in data:
+                if person["year"]!=year:
+                    data.remove(person)
+
+            if degree!="null" and degree:
+                for person in data:
+                    if person["program"]!=degree:
+                        data.remove(person)
+
+            return render_template("/index.html", data=data)
+
+        if degree!="null" and degree:
+            for person in data:
+                if person["program"]!=degree:
+                    data.remove(person)
+
+            return render_template("/index.html", data=data)    
+
+
 
 
     data=[]
-    db.execute("SELECT * FROM alumni_me")
-    me=db.fetchall()
-    data[0:0]=me
+    al_tables=["alumni_me", "alumni_cs", "alumni_ee", "alumni_ch", "alumni_mt", "alumni_ce"]
+            
+    for al_table in al_tables:
+        db.execute("SELECT * FROM " + al_table)
+        alumni=db.fetchall()
+
+        for people in alumni:
+            data.append(people)
 
     return render_template("/index.html", data=data)
 
