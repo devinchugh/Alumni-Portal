@@ -47,32 +47,34 @@ def index():
 
         data=set()
         if search:
-            al_table="alumni_me"
-            db.execute("SELECT * FROM " + al_table + " WHERE name LIKE ?", ("%"+search+"%",) )
-            alumni=db.fetchall()
+            al_tables=["alumni_me", "alumni_cs", "alumni_ee", "alumni_ch", "alumni_mt", "alumni_ce"]
+            
+            for al_table in al_tables:
+                db.execute("SELECT * FROM " + al_table + " WHERE name LIKE ?", ("%"+search+"%",) )
+                alumni=db.fetchall()
 
-            for people in alumni:
-                data.add(people)
+                for people in alumni:
+                    data.add(people)
 
-            db.execute("SELECT * FROM " + al_table + " WHERE email LIKE ?", ("%"+search+"%",) )
-            alumni=db.fetchall()
-            for people in alumni:  
-                data.add(people) 
+                db.execute("SELECT * FROM " + al_table + " WHERE email LIKE ?", ("%"+search+"%",) )
+                alumni=db.fetchall()
+                for people in alumni:  
+                    data.add(people) 
 
-            db.execute("SELECT * FROM " + al_table + " WHERE status LIKE ?", ("%"+search+"%",))
-            alumni=db.fetchall()
-            for people in alumni:
-                data.add(people)
+                db.execute("SELECT * FROM " + al_table + " WHERE status LIKE ?", ("%"+search+"%",))
+                alumni=db.fetchall()
+                for people in alumni:
+                    data.add(people)
 
-            db.execute("SELECT * FROM " + al_table + " WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
-            alumni=db.fetchall()
-            for people in alumni:
-                data.add(people)
+                db.execute("SELECT * FROM " + al_table + " WHERE alumni_id LIKE ? ", ("%"+search+"%",) )
+                alumni=db.fetchall()
+                for people in alumni:
+                    data.add(people)
 
-            db.execute("SELECT * FROM " + al_table + " WHERE entry_no LIKE ? ", ("%"+search+"%",) )
-            alumni=db.fetchall()
-            for people in alumni:
-                data.add(people)               
+                db.execute("SELECT * FROM " + al_table + " WHERE entry_no LIKE ? ", ("%"+search+"%",) )
+                alumni=db.fetchall()
+                for people in alumni:
+                    data.add(people)               
 
             return render_template("/index.html",data=data)
 
