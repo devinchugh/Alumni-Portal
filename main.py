@@ -115,23 +115,25 @@ def index():
                 data.append(people)
 
         if year and year!="null":
+            result=[]
             for person in data:
-                if person["year"]!=year:
-                    data.remove(person)
+                if person["year"]==int(year):
+                    result.append(person)
 
             if degree!="null" and degree:
                 for person in data:
-                    if person["program"]!=degree:
-                        data.remove(person)
+                    if person["program"]==degree:
+                        result.append(person)
 
-            return render_template("/index.html", data=data)
+            return render_template("/index.html", data=result)
 
         if degree!="null" and degree:
+            result=[]
             for person in data:
-                if person["program"]!=degree:
-                    data.remove(person)
+                if person["program"]==degree:
+                    result.append(person)
 
-            return render_template("/index.html", data=data)    
+            return render_template("/index.html", data=result)    
 
 
 
