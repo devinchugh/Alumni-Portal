@@ -12,21 +12,35 @@ Custom Css
 *{margin: 0; padding: 0;}
 .section-forms{
     display:flex ;
-    margin-left: 5vh;
+    padding-left: 5vh;
+    background-color: #022e70;
 }
 .sections{
     color: #ffff;
     background-color: #212934;
     width: auto;
-    padding: 15px 40px;
+    padding: 15px 20px;
     list-style-type: none;
-    margin-top: -10vh;
+    margin: 5vh;
     border-radius: 5px;
 }
 .sections option{
     display:block ;
 }
 
+button.sections{
+    color: #ffff;
+    background-color: #212934;
+    width: auto;
+    padding: 12px 40px;
+    list-style-type: none;
+    margin: -10vh 20vh;
+    border-radius: 5px;
+}
+
+button.sections:hover{
+    background-color: black;
+}
 
 
 

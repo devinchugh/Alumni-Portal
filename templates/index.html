@@ -155,27 +155,23 @@
     <!-- End Banner -->
 <!-- individual details -->
 
-    <section class="bg-success py-5" >
+    
         <div class="section-forms">
         <form action="{{url_for('index')}}" method="POST">
-        <select name="degree" class="sections" >
-                    <option value="nil">Degree:</option>
-                    <option value="Btech">B.Tech</option>
-                    <option value="Mtech">M.Tech</option>
-                    <option value="PhD">PhD</option>
-              </select>
-        </form> 
-            <form action="{{url_for('index')}}" method="POST">
-                <select name="Year of Enrollment" class="sections">
+                <select name="degree" class="sections" >
+                            <option value="nil">Degree:</option>
+                            <option value="Btech">B.Tech</option>
+                            <option value="Mtech">M.Tech</option>
+                            <option value="PhD">PhD</option>
+                </select>
+                <select name="year" class="sections">
                             <option value="nil">Year of Enrollment:</option>
                             <option value="2016">2016</option>
                             <option value="2017">2017</option>
                             <option value="2018">2018</option>
                             <option value="2019">2019</option>
                 </select>
-            </form> 
-            <form action="{{url_for('index')}}" method="POST">
-                <select name="Department" class="sections">
+                <select name="department" class="sections">
                             <option value="nil">Department:</option>
                             <option value="CH">Chemical Engineering</option>
                             <option value="CE">Civil Engineering</option>
@@ -184,9 +180,10 @@
                             <option value="MT">Material Engineering</option>
                             <option value="ME">Mechanical Engineering</option>
                 </select>
+                <button type="submit" class="sections">Apply</button>
             </form> 
             </div>
-    
+    <section class="bg-success py-5" >
         <div class="container">
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-#1d242d">
