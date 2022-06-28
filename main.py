@@ -5,6 +5,8 @@ from tempfile import mkdtemp
 from helper import login_required
 import sqlite3
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_paginate import Pagination, get_page_args
+
   
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
@@ -33,14 +35,21 @@ connection = sqlite3.connect("database.db", check_same_thread=False)
 # cursor object
 connection.row_factory = sqlite3.Row
 db = connection.cursor()
-  
+
+
+
+# Function to get Paginated data
+def get_data(data, offset=0, per_page=10):
+    return data[min(offset, len(data)):min(offset+per_page, len(data))]
+
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 
 # the associated function.
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    
+    page, per_page, offset = get_page_args(page_parameter='page',                                       per_page_parameter='per_page')
+
     if request.method=="POST":
         search= request.form.get("search")
         print(search)
@@ -76,9 +85,13 @@ def index():
                 for people in alumni:
                     data.append(people)  
 
-            data=list(set(data))                     
+            data=list(set(data))                 
 
-            return render_template("/index.html",data=data)
+            total=len(data)
+            paginated_data = get_data(data=data, offset=offset, per_page=per_page)
+            pagination = Pagination(page=page,per_page=per_page, total=total)
+
+            return render_template("/index.html", data=paginated_data, page=page, per_page=10, pagination=pagination)
 
         degree=request.form.get("degree")
         year=request.form.get("year")
@@ -89,21 +102,33 @@ def index():
 
             db.execute("SELECT * FROM " + al_table)
             alumni=db.fetchall()
+            result=[]
 
             for people in alumni:
                 data.append(people)
 
             if year!="null" and year:
                 for person in data:
-                    if person["year"]!=year:
-                        data.remove(person)
+                    if person["year"]==int(year):
+                        result.append(person)
+            else:
+                result=data            
 
             if degree!="null" and degree:
-                for person in data:
-                    if person["program"]!=degree:
-                        data.remove(person)
+                result_final=[]
+                for person in result:
+                    if person["program"]==degree:
+                        result_final.append(person)
 
-            return render_template("/index.html", data=data)
+                result=result_final
+                                        
+
+            data=result
+            total=len(data)
+            paginated_data = get_data(data=data, offset=offset, per_page=per_page)
+            pagination = Pagination(page=page,per_page=per_page, total=total)
+
+            return render_template("/index.html", data=paginated_data, page=page, per_page=10, pagination=pagination)
 
         al_tables=["alumni_me", "alumni_cs", "alumni_ee", "alumni_ch", "alumni_mt", "alumni_ce"]
             
@@ -125,7 +150,12 @@ def index():
                     if person["program"]==degree:
                         result.append(person)
 
-            return render_template("/index.html", data=result)
+            data=result
+            total=len(data)
+            paginated_data = get_data(data=data, offset=offset, per_page=per_page)
+            pagination = Pagination(page=page,per_page=per_page, total=total)
+
+            return render_template("/index.html", data=paginated_data, page=page, per_page=10, pagination=pagination)
 
         if degree!="null" and degree:
             result=[]
@@ -133,7 +163,12 @@ def index():
                 if person["program"]==degree:
                     result.append(person)
 
-            return render_template("/index.html", data=result)    
+            data=result
+            total=len(data)
+            paginated_data = get_data(data=data, offset=offset, per_page=per_page)
+            pagination = Pagination(page=page,per_page=per_page, total=total)
+
+            return render_template("/index.html", data=paginated_data, page=page, per_page=10, pagination=pagination)    
 
 
 
@@ -147,8 +182,12 @@ def index():
 
         for people in alumni:
             data.append(people)
+    
+    total=len(data)
+    paginated_data = get_data(data=data, offset=offset, per_page=per_page)
+    pagination = Pagination(page=page,per_page=per_page, total=total)
 
-    return render_template("/index.html", data=data)
+    return render_template("/index.html", data=paginated_data, page=page, per_page=10, pagination=pagination)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

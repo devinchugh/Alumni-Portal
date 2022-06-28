@@ -23,4 +23,4 @@ def login_required(f):
 
 
 if __name__ == '__main__':
-    print(generate_password_hash("devin"))
+    print(min(3,4))
