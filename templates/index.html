@@ -187,32 +187,22 @@
     <section class="bg-success py-5" >
         <div class="container">
             <div class="row align-items-center py-5">
-                <div class="col-md-8 text-#1d242d">
+                    
+                    
                     {% for alumni in data %}	
-									
+                    <div class="col-md-8 text-#1d242d">
 									<h1 class="feature-title" >{{alumni.name}} </h1><p><br> Email: <a class="clink" target="_blank" href="mailto:{{alumni.email}}" >{{alumni.email}}</a>
                                          <br>Phone: {{alumni.phone}} <br>Entry No.: {{alumni.entry_no}} <br>Year of Enrollment: {{alumni.year}} <br>Program: {{alumni.program}} <br>LinkedIn: <a class="clink" target="_blank" href="{{alumni.linkedin_id}}">{{alumni.linkedin_id}}</a><br>Status: {{alumni.status}}</p>
-
                                          <br>
+                                         <br>
+                    </div>                
+                                         <img class="col-md-4" src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" style="width: 225px;height: 225px;">
+
                                          <br>
                                         
 									
 					{% endfor %}
                     
-                </div>
-                <div class="col-md-4">
-                    {% for alumni in data %}	
-										<img src="{{url_for('static', filename='home_assets/img/' + alumni.profile_pic)}}" alt="" style="width: 225px;height: 225px;">
-
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-									
-									
-					{% endfor %}
-                    
-                </div>
                 {{ pagination.links }}
             </div>
         </div>
